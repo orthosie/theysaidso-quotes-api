@@ -1,0 +1,77 @@
+FORMAT: 1A
+HOST: http://quotes.rest
+
+# Quotes 
+
+This is the documentation for the world famous quotes API https://theysaidso.com/api . They Said So Quotes API offers a complete feature rich REST API access to its quotes platform.
+
+## Quote of the day
+
+### Quote of the day Categories [/qod/categories] 
+
+#### List All Quote of the Categories [GET]
+
++ Response 200 (application/json)
+        
+        {
+            "success": {
+                "total": 8
+            },
+            "contents": {
+                "categories": {
+                    "inspire": "Inspiring Quote of the day",
+                    "management": "Management Quote of the day",
+                    "sports": "Sports Quote of the day",
+                    "life": "Quote of the day about life",
+                    "funny": "Funny Quote of the day",
+                    "love": "Quote of the day about Love",
+                    "art": "Art quote of the day ",
+                    "students": "Quote of the day for students"
+                },
+                "copyright": "2013-15 http://theysaidso.com"
+            }
+        }
+
+### Get Quote of the day [/qod{?category}]
+
+#### Get a Quote of the day from a specific category [GET]
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Parameters
+    + category  (string) - QOD Category to get the Quote 
+    
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /qod
+
+    + Body
+
+            {
+                "success": {
+                    "total": 1
+                },
+                "contents": {
+                    "quotes": [
+                        {
+                            "quote": "People are like stained glass windows. \r\n They sparkle and shine when the sun is out,\r\n but when the darkness sets in,\r\n their true beauty is revealed only if there is a light from within.",
+                            "length": "188",
+                            "author": "Elizabeth Kubler Ross",
+                            "tags": [
+                                "inspire",
+                                "people",
+                                "true-beauty"
+                            ],
+                            "category": "inspire",
+                            "date": "2016-07-21",
+                            "title": "Inspiring Quote of the day",
+                            "background": "https://theysaidso.com/img/bgs/man_on_the_mountain.jpg",
+                            "id": "W4YG10QyNrQurhRyoFZkRweF"
+                        }
+                    ]
+                }
+            }
