@@ -5,11 +5,12 @@ HOST: http://quotes.rest
 
 This is the documentation for the world famous quotes API https://theysaidso.com/api . They Said So Quotes API offers a complete feature rich REST API access to its quotes platform.
 
-## Quote of the day
+# Group Quote of the day
 
-### Quote of the day Categories [/qod/categories] 
+## Quote of the day Categories [/qod/categories] 
+Return all the available categories for Quote of the day. 
 
-#### List All Quote of the Categories [GET]
+### List All Quote of the Categories [GET]
 
 + Response 200 (application/json)
         
@@ -32,12 +33,10 @@ This is the documentation for the world famous quotes API https://theysaidso.com
             }
         }
 
-### Get Quote of the day [/qod{?category}]
+## Get Quote of the day [/qod{?category}]
+Get a quote of the day. The category can be any of the categories listed in previous call. Be sure to check the list often as we update and add the QOD categories very often.
+### Get a Quote of the day from a specific category [GET]
 
-#### Get a Quote of the day from a specific category [GET]
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
 
 + Parameters
     + category  (string) - QOD Category to get the Quote 
@@ -74,4 +73,45 @@ form of choices.
                         }
                     ]
                 }
+            }
+            
+            
+            
+
+# Group Random Quotes
+
+## Get a random Quote [/quote{?author}{?category}{?minlength}{?maxlength}] 
+Get a random quote from theysaidso.com. 
+
+### Get a random quote [GET]
+
+
++ Parameters
+    + category  (string, optional) - Category/tag/topic of of the Quote
+    + author    (string, optional) - Author of the quote
+    + minlength (number, optional) - Minimum length of the quote string
+    + maxlength (number, optional) - Maximum length of the quote string
+    
+    
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /quote
+
+    + Body
+
+            {
+                "success":
+                    {
+                        "total":1
+                    },
+                "contents":
+                    {
+                        "quote": "We need real leadership, Democrat, Republican and independent to stand up and say, we have to live within our means.",
+                        "author":"Tom Coburn",
+                        "id":"hjlWreIUIrPr_FdD_Xv8QweF",
+                        "requested_category":"leadership",
+                        "categories":["leadership","management"]
+                    }
             }
