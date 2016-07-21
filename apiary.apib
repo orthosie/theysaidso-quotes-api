@@ -3,15 +3,22 @@ HOST: http://quotes.rest
 
 # Quotes 
 
-This is the documentation for the world famous quotes API https://theysaidso.com/api . They Said So Quotes API offers a complete feature rich REST API access to its quotes platform.
+This is the documentation for the world famous quotes API https://theysaidso.com/api . They Said So Quotes API offers a complete feature rich REST API access to its quotes platform. If you are a subscriber and you are trying this from a console add 'X-TheySaidSo-Api-Secret' header and add your api key as the header value.
 
 # Group Quote of the day
+This is a public portion of the API. Anyone can access but the calls are rate limited.
 
 ## Quote of the day Categories [/qod/categories] 
 Return all the available categories for Quote of the day. 
 
 ### List All Quote of the Categories [GET]
 
++ Request
+  
+  + Headers
+  
+            Accept: application/json
+            
 + Response 200 (application/json)
         
         {
@@ -41,12 +48,18 @@ Get a quote of the day. The category can be any of the categories listed in prev
 + Parameters
     + category  (string) - QOD Category to get the Quote 
     
-
++ Request
+  
+  + Headers
+  
+            Accept: application/json
+            
 + Response 201 (application/json)
 
     + Headers
 
             Location: /qod
+            
 
     + Body
 
@@ -79,6 +92,7 @@ Get a quote of the day. The category can be any of the categories listed in prev
             
 
 # Group Random Quotes
+This is part of private API. You need an API Key to access these. To get an API Key visit https://theysaidso.com/api
 
 ## Get a random Quote [/quote{?author}{?category}{?minlength}{?maxlength}] 
 Get a random quote from theysaidso.com. 
@@ -92,7 +106,12 @@ Get a random quote from theysaidso.com.
     + minlength (number, optional) - Minimum length of the quote string
     + maxlength (number, optional) - Maximum length of the quote string
     
-    
++ Request
+  
+  + Headers
+  
+            Accept: application/json
+                
 + Response 201 (application/json)
 
     + Headers
